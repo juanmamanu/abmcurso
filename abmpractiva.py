@@ -107,11 +107,13 @@ def imprimir_usuarios():
     print("lista de usuarios usuarios")
     print(usuarios)
 def mostrar_usuarios():
-    print (f"{usuarios}")
+    print (f"{usuarios}")  #Falta trabajar como leer e imprimir en pantalla ordenado y prolija la lista de usuarios
 
 def persistir():
     with open("usuarios.json", "w") as archivo:
         archivo.writelines(json.dumps(usuarios, indent=2))
+
+
 # Inicio de mi script
 
 if __name__ == "__main__":
