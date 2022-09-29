@@ -6,6 +6,19 @@ import json
 import os
 
 #Declaración de funciones
+class Usuario:
+    
+    def __init__(self, usuario, nombre, edad, passsword):
+        self.usuario = usuario
+        self.nombre = nombre
+        self.edad = edad
+        self.
+
+
+
+
+
+"""
 usuarios = dict()
 
 def mostrar_menu():
@@ -112,10 +125,34 @@ def mostrar_usuarios():
 def persistir():
     with open("usuarios.json", "w") as archivo:
         archivo.writelines(json.dumps(usuarios, indent=2))
-
+"""
 
 # Inicio de mi script
 
+if __name__ == "__main__":
+    usuarios =dict()
+
+    if os.path.exists("usuarios.json"):
+        with open("usuarios.json", "r") as archivo:
+            usuarios = json.load(archivo)
+
+    menu_abm_usuarios =menuAbm(usuarios)
+
+    while True:
+        menu_abm_usuarios.mostrar_menu()
+        salir =menu_abm_usuarios.leer_operacion()
+        if salir :
+            break
+
+
+
+
+
+
+
+
+"""
+segundo menu
 if __name__ == "__main__":
     if os.path.exists("usuarios.json"):
         with open("usuarios.json", "r") as archivo:        
@@ -143,12 +180,15 @@ if __name__ == "__main__":
         else:
             print("La operación ingresada no existe")
         persistir() 
+"""
 
 
 
 
 
 """
+
+primer menu
 while True:
     
     mostrar_menu()
