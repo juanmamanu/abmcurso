@@ -1,4 +1,5 @@
 #Simulador de ABM
+#agregar regla de simbolos especiales para usuarios, passwords e is numeric edad
 
 #importar
 
@@ -12,7 +13,46 @@ class Usuario:
         self.usuario = usuario
         self.nombre = nombre
         self.edad = edad
-        self.
+        self.password = passsword
+    
+
+    def __str__(self):
+        return f"usuario:{self.usuario} , Nombre:{self.nombre}, Edad:{self.edad}"
+
+    def validar_datos_usuarios(self):
+        usuario_valido = True
+        regla_string_usuario_valido = (not self.usuario[0].isnumeric() and len(self.usuario) > 3)
+        regla_nombre_valido = len(self.nombre) > 3
+        regla_edad_valido = self.edad.isnumeric()
+        regla_password = len(self.password) > 3 and '#' in self.password or '%' in self.password
+
+
+        if not regla_string_usuario_valido:
+            print("Usuario: No puede empezar con un Número y Tienen que Ser mayor a 3 caracteres")
+            usuario_valido = False
+
+        if not regla_nombre_valido:
+            print("Nombre: Tiene que ser mayor a 3 caracteres")
+            
+        if not regla_edad_valido:
+            print("Edad tiene que ser un entero")
+            usuario_valido = False
+
+        if not regla_password:
+            print("EL password tiene que ser mayor a 3 caracteres y tiene que tener un # o %")
+            usuario_valido = False
+
+        return usuario_valido
+
+        
+
+
+
+
+
+    def __persistir(self):
+        with open("usuarios.json", "w") as archivo:
+            archivo.writelines(json.dumps(self.usuarios, indent=2))
 
 
 
@@ -126,6 +166,7 @@ def persistir():
     with open("usuarios.json", "w") as archivo:
         archivo.writelines(json.dumps(usuarios, indent=2))
 """
+
 
 # Inicio de mi script
 
