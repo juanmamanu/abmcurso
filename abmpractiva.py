@@ -47,14 +47,24 @@ class Usuario:
         
 
 
-
-
-
     def __persistir(self):
         with open("usuarios.json", "w") as archivo:
             archivo.writelines(json.dumps(self.usuarios, indent=2))
+            
+class MenuAbm:
+    def __init__(self,usuario = dict()):
+    self.usuarios = usuarios
 
-
+    def __crear_usuario(self):
+        usuario_valido= True
+        
+        print("crear usuario\n")
+        usuario = input("Usuario: ")
+        nombre = input("Nombre: ")
+        edad = input("Edad: ")
+        password = input("Password: ")
+        password_dos = input("Repita el password: ")
+        
 
 
 
@@ -79,9 +89,7 @@ def crear_usuario():
     password_dos = input("Repita el password: ")
     
     regla_string_usuario_valido = (not usuario[0].isnumeric() and len(usuario) > 6)
-    
     regla_usaurio_no_repetido = (usuario not in usuarios)
-    
     regla_nombre_valido = len(nombre) > 3
     
     regla_edad_valido = edad.isnumeric()
