@@ -49,11 +49,12 @@ class Usuario:
 
     def __persistir(self):
         with open("usuarios.json", "w") as archivo:
-            archivo.writelines(json.dumps(self.usuarios, indent=2))
+            archivo.writelines(json.dumps(self.usuario, indent=2))
             
 class MenuAbm:
     def __init__(self,usuario = dict()):
-    self.usuarios = usuarios
+    self.usuarios = usuario
+
 
     def __crear_usuario(self):
         usuario_valido= True
