@@ -51,10 +51,11 @@ class Usuario:
         with open("usuarios.json", "w") as archivo:
             archivo.writelines(json.dumps(self.usuario, indent=2))
             
-class MenuAbm:
-    def __init__(self,usuario = dict()):
-    self.usuarios = usuario
 
+class MenuAbm:
+
+    def __init__(self, usuarios=dict()):
+        self.usuarios=usuarios
 
     def __crear_usuario(self):
         usuario_valido= True
@@ -66,7 +67,8 @@ class MenuAbm:
         password = input("Password: ")
         password_dos = input("Repita el password: ")
         
-
+def mostrar_menu(self):
+    pass
 
 
 """
@@ -180,18 +182,19 @@ def persistir():
 # Inicio de mi script
 
 if __name__ == "__main__":
-    usuarios =dict()
+
+    usuarios = dict()
 
     if os.path.exists("usuarios.json"):
-        with open("usuarios.json", "r") as archivo:
+        with open("usuarios.json", "r") as archivo:        
             usuarios = json.load(archivo)
-
-    menu_abm_usuarios =menuAbm(usuarios)
-
+    
+    menu_abm_usuarios = MenuAbm(usuarios)
+    
     while True:
         menu_abm_usuarios.mostrar_menu()
-        salir =menu_abm_usuarios.leer_operacion()
-        if salir :
+        salir = menu_abm_usuarios.leer_operacion()
+        if salir:
             break
 
 
